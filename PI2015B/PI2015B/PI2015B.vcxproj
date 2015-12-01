@@ -86,6 +86,7 @@
     <ClInclude Include="DXGIManager.h" />
     <ClInclude Include="Frame.h" />
     <ClInclude Include="PI2015B.h" />
+    <ClInclude Include="Recognizer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Structures.h" />
@@ -96,6 +97,7 @@
     <ClCompile Include="DXGIManager.cpp" />
     <ClCompile Include="Frame.cpp" />
     <ClCompile Include="PI2015B.cpp" />
+    <ClCompile Include="Recognizer.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
