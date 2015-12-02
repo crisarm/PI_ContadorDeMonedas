@@ -1,21 +1,20 @@
-﻿Build started 30/11/2015 08:09:40 p. m..
-     1>Project "C:\Users\DaRwIn\Documents\GitHub - HAR\PI2015B\PI2015B\PI2015B.vcxproj" on node 2 (Build target(s)).
+﻿Build started 01/12/2015 05:50:32 p. m..
+     1>Project "C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\PI2015B\PI2015B.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\PI2015B.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt PI2015B.cpp
-         Skipping... (no relevant changes detected)
-         PI2015B.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\PI2015B.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Recognizer.cpp
+         Recognizer.cpp
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\DaRwIn\Documents\GitHub - HAR\PI2015B\Debug\PI2015B.exe" /INCREMENTAL /NOLOGO dxgi.lib d3d11.lib dinput8.lib dsound.lib dxguid.lib d3dcompiler.lib ..\Video\AtWareVC32Lib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\DaRwIn\Documents\GitHub - HAR\PI2015B\Debug\PI2015B.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\DaRwIn\Documents\GitHub - HAR\PI2015B\Debug\PI2015B.lib" /MACHINE:X86 Debug\PI2015B.res
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\Debug\PI2015B.exe" /INCREMENTAL /NOLOGO dxgi.lib d3d11.lib dinput8.lib dsound.lib dxguid.lib d3dcompiler.lib ..\Video\AtWareVC32Lib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\Debug\PI2015B.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\Debug\PI2015B.lib" /MACHINE:X86 Debug\PI2015B.res
          Debug\DXGIManager.obj
          Debug\Frame.obj
          Debug\PI2015B.obj
+         Debug\Recognizer.obj
          Debug\stdafx.obj
          Debug\Structures.obj
          Debug\VideoProcessor.obj
-     1>AtWareVC32Lib.lib(VideoCaptureManager.obj) : warning LNK4099: PDB 'vc100.pdb' was not found with 'AtWareVC32Lib.lib(VideoCaptureManager.obj)' or at 'C:\Users\DaRwIn\Documents\GitHub - HAR\PI2015B\Debug\vc100.pdb'; linking object as if no debug info
-         PI2015B.vcxproj -> C:\Users\DaRwIn\Documents\GitHub - HAR\PI2015B\Debug\PI2015B.exe
-     1>Done Building Project "C:\Users\DaRwIn\Documents\GitHub - HAR\PI2015B\PI2015B\PI2015B.vcxproj" (Build target(s)).
+         PI2015B.vcxproj -> C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\Debug\PI2015B.exe
+     1>Done Building Project "C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\PI2015B\PI2015B.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.39
+Time Elapsed 00:00:02.43

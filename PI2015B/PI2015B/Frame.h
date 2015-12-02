@@ -4,7 +4,7 @@ class CFrame
 public:
 	struct PIXEL
 	{
-		unsigned char r, g, b, a;
+		unsigned char l;
 	};
 protected:
 	PIXEL* m_pFrame;

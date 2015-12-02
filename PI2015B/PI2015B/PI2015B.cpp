@@ -8,6 +8,7 @@
 #include "..\\Video\\AtWareVideoCapture.h"
 #include "VideoProcessor.h"
 #include "Frame.h"
+#include "Recognizer.h"
 #define MAX_LOADSTRING 100
 
 
@@ -21,7 +22,9 @@ TCHAR szWindowClass[MAX_LOADSTRING];			// the main window class name
 
 	IAtWareVideoCapture* g_pVC;	//Interface Video Capture
 	CVideoProcessor g_VP;
-	CFrame* g_pPulledFrame; 
+	CFrame* g_pPulledFrame;
+	CRecognizer g_Rcg;
+	bool g_bHayMoneda;
 										
 // Forward declarations of functions included in this code module:
 ATOM				MyRegisterClass(HINSTANCE hInstance);
@@ -120,6 +123,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    hWnd = CreateWindow(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, NULL, NULL, hInstance, NULL);
 
+   g_bHayMoneda = false;
    if (!hWnd)
    {
       return FALSE;
@@ -172,6 +176,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	PAINTSTRUCT ps;
 	HDC hdc;
 	static float s_ftime = 0;
+	static int iArea;
 
 	switch (message)
 	{
@@ -211,11 +216,25 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			g_pPulledFrame  = g_VP.Pull();
 			if( g_pPulledFrame != NULL  )
 			{
-				// Use pulled frame
+				if( g_bHayMoneda )
+				{
+					if( ! g_Rcg.detectoMonedaEnFila( g_pPulledFrame, 0 ) )
+					{
+						iArea = g_Rcg.area( g_pPulledFrame );
+						TCHAR szMessage[ 64 ];
+						wsprintf( szMessage, L"Area: %d", iArea );
+						SetWindowText( hWnd, szMessage );
+						g_bHayMoneda = false;
+					}
+				}
+				else
+				{
+					g_bHayMoneda = g_Rcg.detectoMonedaEnFila( g_pPulledFrame, 0 );
+				}
+
 				delete g_pPulledFrame;
 			
 				g_Manager.GetSwapChain()->Present( 1, 0 ); // 1-Sync  
-
 			}
 		}
 			ValidateRect( hWnd, NULL );

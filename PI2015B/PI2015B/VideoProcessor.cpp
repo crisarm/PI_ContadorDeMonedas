@@ -14,7 +14,7 @@ CVideoProcessor::~CVideoProcessor()
 void CVideoProcessor::Push(CFrame* pFrame)
 {
 	EnterCriticalSection(&m_csLock);
-	if (m_lstFrames.size() > 60)
+	if (m_lstFrames.size() > 1)
 	{
 		CFrame* pFrameToDestroy = m_lstFrames.front();
 		m_lstFrames.pop_front();
@@ -57,38 +57,12 @@ HRESULT CVideoProcessor::BufferCB(double SampleTime, BYTE *pBuffer, long BufferL
 			}; // /*
 			for (int j = 0; j < pVIH->bmiHeader.biHeight; j++)
 			{
-				YUY2* pRow  = (YUY2*)(pBuffer + j*pVIH->bmiHeader.biWidth * 2);
+				//YUY2* pRow  = (YUY2*)(pBuffer + j*pVIH->bmiHeader.biWidth * 2);
+				YUY2* pRow  = (YUY2*)(pBuffer + j*pVIH->bmiHeader.biWidth / 2);
 				for (int i = 0; i < pVIH->bmiHeader.biWidth / 2; i++)
 				{
-					int l0 = 298 * (pRow->y0 - 16);
-					int l1 = 298 * (pRow->y0 - 16);
-
-					int D = pRow->u0 - 128;
-					int E = pRow->v0 - 128;
-
-					int sR, sG, sB;
-					sR = sG = sB = 128;
-					sR +=  409*E;
-					sG += -100*D-208*E;
-					sB +=  516*D;
-					
-					CFrame::PIXEL Color;
-					int R = (l0 + sR) / 256;
-					int G = (l0 + sG) / 256;
-					int B = (l0 + sB) / 256;
-					
-					Color.r = (unsigned char)( R > 255 ? 255 : R );
-					Color.g = (unsigned char)( G > 255 ? 255 : G );
-					Color.b = (unsigned char)( B > 255 ? 255 : B );
-					pF->GetPixel( i*2 , j ) = Color;
-					
-					R = (l1 + sR) / 256;
-					G = (l1 + sG) / 256;
-					B = (l1 + sB) / 256;
-					Color.r = (unsigned char)( R > 255 ? 255 : R );
-					Color.g = (unsigned char)( G > 255 ? 255 : G );
-					Color.b = (unsigned char)( B > 255 ? 255 : B );
-					pF->GetPixel( i*2+1 , j ) = Color;
+					pF->GetPixel( i*2, j ).l   = pRow->y0;
+					pF->GetPixel( i*2+1, j ).l = pRow->y1;
 
 					pRow++;
 				}

@@ -7,7 +7,7 @@ public:
 	CRecognizer(void);
 	~CRecognizer(void);
 
-	bool lineaNegra( CFrame pFrame, int& y );
-	int area( CFrame pFrame );
+	bool detectoMonedaEnFila( CFrame* pFrame, int y );
+	int area( CFrame* pFrame );
 };
 

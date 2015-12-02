@@ -12,19 +12,24 @@ CRecognizer::~CRecognizer(void)
 }
 
 
-bool lineaNegra( CFrame* pFrame, int& y )
+bool CRecognizer::detectoMonedaEnFila( CFrame* pFrame, int y )
 {
+	int count = 0;
 	for( int x = 0; x < pFrame->m_sx; x++ )
-		if( pFrame->GetPixel(x,y).r > 50 )	
-			return false;
-	return true;
+	{
+		if( pFrame->GetPixel(x,y).l < 0x30 )	
+		{
+			count++;
+		}
+	}
+	return count > 10;
 }
-int area( CFrame* pFrame )
+int CRecognizer::area( CFrame* pFrame )
 {
 	int firstY = 0;
-	for( int y = 0; y < pFrame->m_sy; y++ )
+	for( int y = firstY; y < pFrame->m_sy; ++y )
 	{
-		if( ! lineaNegra( pFrame, y ) )
+		if( detectoMonedaEnFila( pFrame, y ) )
 		{
 			firstY = y;
 			break;
@@ -32,19 +37,19 @@ int area( CFrame* pFrame )
 	}
 
 	int area = 0;
-	bool lineaActualNegra;
-	for( int y = firstY; y < pFrame->m_sy; y++ )
+	bool filaSinMoneda;
+	for( int y = firstY; y < pFrame->m_sy; ++y )
 	{
-		lineaActualNegra = true;
+		filaSinMoneda = true;
 		for( int x=0; x < pFrame->m_sx; x++ )
 		{
-			if( pFrame->GetPixel(x,y).r > 50 )	
+			if( pFrame->GetPixel(x,y).l < 0x30 )	
 			{
 				area++;
-				lineaActualNegra = false;
+				filaSinMoneda = false;
 			}
 		}
-		if( lineaActualNegra )
+		if( filaSinMoneda )
 			return area;
 	}
 
