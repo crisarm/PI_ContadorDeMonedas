@@ -8,6 +8,8 @@ public:
 	~CRecognizer(void);
 
 	bool detectoMonedaEnFila( CFrame* pFrame, int y );
-	int area( CFrame* pFrame );
+	void area( CFrame* pFrame );
+
+	int iDiamX, iDiamY;
 };
 

@@ -11,20 +11,21 @@ CRecognizer::~CRecognizer(void)
 {
 }
 
-
+#define MIN_VALUE 0x40
 bool CRecognizer::detectoMonedaEnFila( CFrame* pFrame, int y )
 {
 	int count = 0;
 	for( int x = 0; x < pFrame->m_sx; x++ )
 	{
-		if( pFrame->GetPixel(x,y).l < 0x30 )	
+		unsigned char lum = pFrame->GetPixel(x,y).l;
+		if( lum < MIN_VALUE )	
 		{
 			count++;
 		}
 	}
 	return count > 10;
 }
-int CRecognizer::area( CFrame* pFrame )
+void CRecognizer::area( CFrame* pFrame )
 {
 	int firstY = 0;
 	for( int y = firstY; y < pFrame->m_sy; ++y )
@@ -36,22 +37,34 @@ int CRecognizer::area( CFrame* pFrame )
 		}
 	}
 
-	int area = 0;
+	iDiamX = 0;
 	bool filaSinMoneda;
 	for( int y = firstY; y < pFrame->m_sy; ++y )
 	{
+		int iStart = 0, iEnd = 0;
 		filaSinMoneda = true;
 		for( int x=0; x < pFrame->m_sx; x++ )
 		{
-			if( pFrame->GetPixel(x,y).l < 0x30 )	
+			if( pFrame->GetPixel(x,y).l < MIN_VALUE )	
 			{
-				area++;
-				filaSinMoneda = false;
+				iEnd = x;
+				if( filaSinMoneda )
+				{
+					iStart = x;
+					filaSinMoneda = false;
+				}
 			}
 		}
 		if( filaSinMoneda )
-			return area;
+		{
+			iDiamY = y - firstY;
+			return;
+		}
+		int iFila = iEnd - iStart;
+		if( iFila > iDiamX )
+			iDiamX = iFila;
 	}
 
-	return area;
+
+	iDiamY = pFrame->m_sy - firstY;
 }

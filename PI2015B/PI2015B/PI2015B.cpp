@@ -177,11 +177,12 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	HDC hdc;
 	static float s_ftime = 0;
 	static int iArea;
+	static int s_i3d4 = 0;
 
 	switch (message)
 	{
 			case WM_CREATE:
-				SetTimer( hWnd, 1, 20, NULL );
+				SetTimer( hWnd, 1, 1, NULL );
 				break;
 			case WM_TIMER:
 				switch( wParam )
@@ -216,21 +217,51 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			g_pPulledFrame  = g_VP.Pull();
 			if( g_pPulledFrame != NULL  )
 			{
-				if( g_bHayMoneda )
+				if( s_i3d4 == 0 )
+					s_i3d4 = g_pPulledFrame->m_sy * 3 / 4;
+				
+				if( ! g_bHayMoneda )
+				{
+					if( g_Rcg.detectoMonedaEnFila( g_pPulledFrame, s_i3d4 ) )
+					{
+						g_Rcg.area( g_pPulledFrame );
+						TCHAR szMessage[ 64 ];
+						wsprintf( szMessage, L"( %d , %d )", g_Rcg.iDiamX, g_Rcg.iDiamY );
+						SetWindowText( hWnd, szMessage );
+						g_bHayMoneda = true;
+					}
+				}
+				else if( ! g_Rcg.detectoMonedaEnFila( g_pPulledFrame, s_i3d4 ) )
+				{
+					g_bHayMoneda = false;
+					
+					TCHAR szMessage[ 64 ];
+					wsprintf( szMessage, L"+ ( %d , %d ) +", g_Rcg.iDiamX, g_Rcg.iDiamY );
+					SetWindowText( hWnd, szMessage );
+				}
+
+
+				/*if( g_bHayMoneda )
 				{
 					if( ! g_Rcg.detectoMonedaEnFila( g_pPulledFrame, 0 ) )
 					{
-						iArea = g_Rcg.area( g_pPulledFrame );
+						g_Rcg.area( g_pPulledFrame );
 						TCHAR szMessage[ 64 ];
-						wsprintf( szMessage, L"Area: %d", iArea );
+						wsprintf( szMessage, L"( %d , %d )", g_Rcg.iDiamX, g_Rcg.iDiamY );
 						SetWindowText( hWnd, szMessage );
 						g_bHayMoneda = false;
 					}
 				}
 				else
 				{
-					g_bHayMoneda = g_Rcg.detectoMonedaEnFila( g_pPulledFrame, 0 );
-				}
+					if( g_Rcg.detectoMonedaEnFila( g_pPulledFrame, s_i3d4 ) )
+					{
+						g_bHayMoneda = true;
+						TCHAR szMessage[ 64 ];
+						wsprintf( szMessage, L"Moneda entrante" );
+						SetWindowText( hWnd, szMessage );
+					}
+				}*/
 
 				delete g_pPulledFrame;
 			

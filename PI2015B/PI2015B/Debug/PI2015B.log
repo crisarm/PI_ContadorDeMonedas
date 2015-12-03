@@ -1,8 +1,11 @@
-﻿Build started 01/12/2015 05:50:32 p. m..
+﻿Build started 02/12/2015 06:29:31 p. m..
      1>Project "C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\PI2015B\PI2015B.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\PI2015B.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Recognizer.cpp
-         Recognizer.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\PI2015B.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt PI2015B.cpp
+         PI2015B.cpp
+     1>c:\users\darwin\documents\github - har\pi_contadordemonedas\pi_contadordemonedas\pi2015b\pi2015b\pi2015b.cpp(190): warning C4305: '+=' : truncation from 'double' to 'float'
+     1>c:\users\darwin\documents\github - har\pi_contadordemonedas\pi_contadordemonedas\pi2015b\pi2015b\pi2015b.cpp(176): warning C4101: 'ps' : unreferenced local variable
+     1>c:\users\darwin\documents\github - har\pi_contadordemonedas\pi_contadordemonedas\pi2015b\pi2015b\pi2015b.cpp(177): warning C4101: 'hdc' : unreferenced local variable
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\Debug\PI2015B.exe" /INCREMENTAL /NOLOGO dxgi.lib d3d11.lib dinput8.lib dsound.lib dxguid.lib d3dcompiler.lib ..\Video\AtWareVC32Lib.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\Debug\PI2015B.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\DaRwIn\Documents\GitHub - HAR\PI_ContadorDeMonedas\PI_ContadorDeMonedas\PI2015B\Debug\PI2015B.lib" /MACHINE:X86 Debug\PI2015B.res
          Debug\DXGIManager.obj
@@ -17,4 +20,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.43
+Time Elapsed 00:00:08.30
